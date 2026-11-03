@@ -30,3 +30,34 @@
 .hero-bottom a{display:inline-flex;align-items:center;gap:5px}
 @media(max-width:650px){.menu-toggle{display:flex;flex-shrink:0}.nav-cta{gap:6px}.hero-bottom{gap:12px}.hero-bottom a{white-space:nowrap}.hero-content{max-width:86%}}
 @media(prefers-reduced-motion:reduce){.hamburger span{transition:none}}
+
+/* Juneberry mobile/navigation reliability patch — SVG strokes, not emoji or CSS glyphs. */
+.ui-arrow {display:inline-block; width:17px; height:17px; flex:none; vertical-align:middle; transform:none; overflow:visible; fill:none; stroke:currentColor; stroke-width:1.65; stroke-linecap:round; stroke-linejoin:round;}
+.ui-arrow::before,.ui-arrow::after,.ui-close::before,.ui-close::after {content:none!important;display:none!important;}
+.ui-arrow.arrow-down {transform:rotate(90deg);margin-left:5px;}
+.ui-arrow.arrow-up {transform:rotate(-90deg);margin-left:5px;}
+.round-link b .ui-arrow {width:20px;height:20px;}
+.round-link b {background:transparent;color:#fff;}
+.round-link:hover b,.round-link:focus-visible b {background:#fff;color:#30251f;}
+.ui-close {display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;}
+.menu-toggle .hamburger {display:block;width:25px;height:25px;flex:none;overflow:visible;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;}
+.hamburger path {transform-box:fill-box;transform-origin:center;transition:transform .22s ease,opacity .18s ease;}
+.menu-toggle[aria-expanded="true"] .bar-top {transform:translateY(6px) rotate(45deg);}
+.menu-toggle[aria-expanded="true"] .bar-mid {opacity:0;}
+.menu-toggle[aria-expanded="true"] .bar-bottom {transform:translateY(-6px) rotate(-45deg);}
+.menu-toggle {position:relative;flex:none;appearance:none;border:1px solid rgba(255,255,255,.42);border-radius:50%;background:rgba(25,20,20,.15);color:white;width:43px;height:43px;align-items:center;justify-content:center;padding:8px;cursor:pointer;touch-action:manipulation;}
+.menu-toggle:focus-visible,.nav a:focus-visible {outline:2px solid #fff;outline-offset:3px;}
+@media(hover:none){.round-link:hover b {background:transparent;color:#fff;}}
+@media(max-width:650px){
+  .nav {display:flex;align-items:center;gap:10px;height:76px;padding:0 5%;}
+  .logo {flex:none;font-size:clamp(26px,7vw,32px);margin-right:auto;}
+  .nav-cta {flex:none;margin:0;gap:5px;padding:11px 12px;white-space:nowrap;font-size:11px;}
+  .nav-cta .ui-arrow {width:13px;height:13px;margin-left:0;}
+  .menu-toggle {display:flex!important;visibility:visible!important;opacity:1!important;z-index:31;}
+  .nav nav {position:absolute;top:76px;left:0;right:0;display:none;flex-direction:column;gap:0;background:#382922;padding:12px 6% 24px;z-index:30;box-shadow:0 22px 35px rgba(25,15,12,.22);}
+  .nav nav.open {display:flex;}
+  .nav nav a {display:block;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:16px;color:#fff;}
+  .round-link b {width:52px;height:52px;}
+}
+@media(max-width:370px){.nav{gap:7px;padding:0 4%}.nav-cta{font-size:10px;padding:10px}.logo{font-size:26px}.menu-toggle{width:39px;height:39px}}
+@media(prefers-reduced-motion:reduce){.hamburger path{transition:none}}

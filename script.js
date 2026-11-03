@@ -38,3 +38,20 @@ document.getElementById('copyOrder').addEventListener('click',async()=>{
  try{await navigator.clipboard.writeText(message);document.getElementById('copyFeedback').textContent='Request copied. Paste it into your message to Juneberry.'}
  catch{const field=document.createElement('textarea');field.value=message;document.body.appendChild(field);field.select();const ok=document.execCommand('copy');field.remove();document.getElementById('copyFeedback').textContent=ok?'Request copied.':'Select the summary above to copy it manually.'}
 });
+
+// Close responsive navigation on Escape or when tapping outside it.
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && nav.classList.contains('open')) {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+    toggle.focus();
+  }
+});
+document.addEventListener('click', (event) => {
+  if (nav.classList.contains('open') && !event.target.closest('.nav')) {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+  }
+});
